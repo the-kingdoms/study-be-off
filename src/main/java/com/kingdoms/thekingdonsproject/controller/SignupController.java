@@ -2,9 +2,9 @@ package com.kingdoms.thekingdonsproject.controller;
 
 import com.kingdoms.thekingdonsproject.model.UserDTO;
 import com.kingdoms.thekingdonsproject.service.UserService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
 
 @RestController
 public class SignupController {
@@ -14,12 +14,17 @@ public class SignupController {
         this.userService = userService;
     }
     @PostMapping("/signup")
-    public void signup(){
+    public void signup (@RequestBody HashMap<String, Object> map){
         UserDTO userDTO = new UserDTO();
-        userDTO.setUserName("yc");
-        userDTO.setEmail("cyc8649@Gmail.com");
-        userDTO.setPassword("1234");
-        System.out.println("userDTO = " + userDTO);
+
+        String username = map.get("username").toString();
+        String email = map.get("email").toString();
+        String password = map.get("password").toString();
+
+        userDTO.setUserName(username);
+        userDTO.setEmail(email);
+        userDTO.setPassword(password);
         userService.insertUser(userDTO);
+        //email중복?
     }
 }
