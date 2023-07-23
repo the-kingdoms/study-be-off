@@ -6,8 +6,8 @@
 
     <insert id="postInsert" parameterType="PostDTO">
         insert into offdb.post
-        (userId, title, content, view, commentView)
-        values(#{userId}, #{title}, #{content}, #{view}, #{commentView});
+        (userId, title, content, view, commentView, createdTime)
+        values(#{userId}, #{title}, #{content}, #{view}, #{commentView}, #{createdTime});
     </insert>
 
 <!--    <insert id="postInserttt" parameterType="PostDTO">-->

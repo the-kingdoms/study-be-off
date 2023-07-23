@@ -28,9 +28,9 @@ public class PostService {
     }
 
     public List<PostDTO> selectAllPost() {
-        List<PostDTO> a = session.selectList(NAMESPACE + "selectAll");
-        System.out.println(a);
-        return a;
+        List<PostDTO> postList = session.selectList(NAMESPACE + "selectAll");
+        System.out.println(postList);
+        return postList;
     }
 }
 
