@@ -6,7 +6,7 @@
 
 
     <insert id="insertcomment" parameterType="CommentDTO">
-        insert into offdb.Comment(userId, userName, content, createDate, postId) values (#{userId}, #{userName}, #{content}, #{createDate}, #{postId});
+        insert into offdb.Comment(userId, content, createDate, postId) values (#{userId}, #{content}, #{createDate}, #{postId});
     </insert>
 
     <select id="getComments" parameterType="int" resultType="CommentDTO">
