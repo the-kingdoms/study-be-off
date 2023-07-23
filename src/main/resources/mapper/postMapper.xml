@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.postMapper">
+
+    <insert id="postInsert" parameterType="PostDTO">
+        insert into offdb.post
+        (userId, title, content, view, commentView)
+        values(#{userId}, #{title}, #{content}, #{view}, #{commentView});
+    </insert>
+
+<!--    <insert id="postInserttt" parameterType="PostDTO">-->
+<!--        insert into offdb.post-->
+<!--        (userId, title, content, view, commentView)-->
+<!--        values (#{userId}, #{title}, #{content}, #{view}, #{commentView});-->
+<!--    </insert>-->
+
+    <select id="selectOne" parameterType="int" resultType="PostDTO">
+        select * from offdb.post
+        where post.postId = #{postId};
+    </select>
+    <select id="selectAll" resultType="PostDTO">
+        select * from offdb.post;
+    </select>
+
+</mapper>
+

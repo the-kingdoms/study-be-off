@@ -4,7 +4,10 @@ import com.kingdoms.thekingdonsproject.Model.UserDTO;
 import com.kingdoms.thekingdonsproject.Service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 public class UserController {
@@ -18,7 +21,7 @@ public class UserController {
     @GetMapping("/test")
     public void test(){
         UserDTO userDTO = new UserDTO();
-        userDTO.setUser_name("성우");
+        userDTO.setUserName("성우");
         userDTO.setEmail("123@naver.com");
         userDTO.setPassword("1234");
         System.out.println(userDTO);
@@ -26,4 +29,16 @@ public class UserController {
         userService.inserUser(userDTO);
     }
 
+
+    @GetMapping("/selectone/{userId}")
+    public void test1(@PathVariable Integer userId) {
+        UserDTO u = userService.selectUser(userId);
+        System.out.println(u);
+    }
+
+    @GetMapping("/selectall")
+    public void test1() {
+        List<UserDTO> u = userService.selectAllUser();
+        System.out.println(u);
+    }
 }
