@@ -4,9 +4,11 @@ import com.kingdoms.thekingdonsproject.model.UserDTO;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Service;
 
+
+
 @Service
 public class UserService {
-    private final String NAMESPCE = "mapper.UserMapper";
+    private final String NAMESPACE = "mapper.UserMapper";
     private SqlSession session;
 
     private UserService(SqlSession session){
@@ -14,6 +16,10 @@ public class UserService {
     }
 
     public void insertUser(UserDTO userDTO){
-        session.insert(NAMESPCE + ".insert", userDTO);
+
+        session.insert(NAMESPACE + ".insert", userDTO);
+    }
+    public int emailCheck(String email){
+        return session.selectOne(NAMESPACE + ".idcheck", email);
     }
 }
