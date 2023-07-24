@@ -23,6 +23,7 @@ public class UserService {
     public UserDTO selectUser(int userId) {
         return session.selectOne(NAMESPACE+"selectOne", userId);
     }
+
     public List<UserDTO> selectAllUser() {
         List<UserDTO> a = session.selectList(NAMESPACE+"selectAll");
         System.out.println(a);

@@ -18,13 +18,13 @@ public class PostController {
     public PostController(PostService postService) {
         this.postService = postService;
     }
-    @GetMapping("/test2")
-    public void test2(){
+    @GetMapping("/postTest")
+    public void postTest(){
         PostDTO postDTO = new PostDTO();
         postDTO.setUserId(1);
         postDTO.setTitle("예시");
         postDTO.setContent("내용");
-//        postDTO.setCreatedTime(11);
+        postDTO.setCreatedTime(LocalDateTime.now());
         postDTO.setView(2);
         postDTO.setCommentView(2);
         System.out.println(postDTO);
@@ -33,14 +33,9 @@ public class PostController {
 
     }
 
-    @GetMapping("/postselectone/{postId}")
-    public void test3(@PathVariable Integer postId) {
-        PostDTO p = postService.selectPost(postId);
-        System.out.println(p);
-    }
 
     @GetMapping("/post")
-    public List<PostDTO> test3(){
+    public List<PostDTO> postList(){
         List<PostDTO> postList = postService.selectAllPost();
         System.out.println(postList);
         return postList;
@@ -65,4 +60,10 @@ public class PostController {
         postService.insertPost(newPostDTO);
     }
 
+    @GetMapping("/post/{postId}")
+    public PostDTO postOne(@PathVariable Integer postId) {
+        PostDTO one = postService.selectPost(postId);
+        System.out.println(one);
+        return one;
+    }
 }
