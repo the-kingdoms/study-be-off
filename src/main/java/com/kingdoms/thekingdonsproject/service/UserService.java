@@ -4,6 +4,8 @@ import com.kingdoms.thekingdonsproject.model.UserDTO;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.Map;
 
 
 @Service
@@ -20,6 +22,10 @@ public class UserService {
         session.insert(NAMESPACE + ".insert", userDTO);
     }
     public int emailCheck(String email){
-        return session.selectOne(NAMESPACE + ".idcheck", email);
+        return session.selectOne(NAMESPACE + ".checkEmail", email);
+    }
+
+    public int passwordCheck(Map<String, Object> map){
+        return session.selectOne(NAMESPACE + ".checkPassword", map);
     }
 }

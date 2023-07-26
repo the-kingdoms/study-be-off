@@ -8,8 +8,11 @@
     <insert id="insert" parameterType="UserDTO">
         insert into offdb.user(userName, email, password) values (#{userName}, #{email}, #{password});
     </insert>
-    <select id = "idcheck" parameterType="String" resultType="int">
-            select count(*) from offdb.user where email = #{email}
+    <select id = "checkEmail" parameterType="String" resultType="int">
+        select count(*) from offdb.user where email = #{email}
+    </select>
+    <select id="checkPassword" parameterType="Map" resultType="int">
+        select count(*) from offdb.user where email = #{email} AND password = #{password}
     </select>
 
 

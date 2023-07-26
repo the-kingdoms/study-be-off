@@ -17,7 +17,7 @@ public class SignupController {
 
 
     @PostMapping("/signup")
-    public void signup (@RequestBody HashMap<String, Object> map) throws Exception{
+    public String signup (@RequestBody HashMap<String, Object> map) throws Exception{
         UserDTO userDTO = new UserDTO();
 
         String username = map.get("username").toString();
@@ -25,11 +25,12 @@ public class SignupController {
         String password = map.get("password").toString();
 
         if (userService.emailCheck(email)==1){
-            throw new Exception("This email already exists");
+            throw new Exception("이미 존재하는 회원입니다.");
         }
         userDTO.setUserName(username);
         userDTO.setEmail(email);
         userDTO.setPassword(password);
         userService.insertUser(userDTO);
+        return "회원 가입에 성공했습니다.";
     }
 }

@@ -1,7 +1,6 @@
 package com.kingdoms.thekingdonsproject.controller;
 
 import com.kingdoms.thekingdonsproject.model.CommentDTO;
-import com.kingdoms.thekingdonsproject.model.UserDTO;
 import com.kingdoms.thekingdonsproject.service.CommentService;
 import org.springframework.web.bind.annotation.*;
 
