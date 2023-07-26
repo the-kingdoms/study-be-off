@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.UserMapper">
+
+
+    <insert id="insert" parameterType="UserDTO">
+        insert into offdb.user(userName, email, password) values (#{userName}, #{email}, #{password});
+    </insert>
+    <select id = "idcheck" parameterType="String" resultType="int">
+            select count(*) from offdb.user where email = #{email}
+    </select>
+
+
+
+
+</mapper>
